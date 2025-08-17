@@ -129,10 +129,10 @@ a:hover{text-decoration:underline}
 
 
 
-.badge { font-size: .75rem; background: var(--surface-2); border: 1px solid rgba(255, 195, 195, 0.445); padding: .25rem .5rem; border-radius: 999px; }
+.badge { font-size: .55rem; background: var(--surface-2); border: 1px solid rgba(255, 195, 195, 0.445); padding: .25rem .5rem; border-radius: 999px; }
 
 .card-actions .btn {
-  padding: 0.45rem 0.8rem;   /* menor altura/largura */
+  padding: 0.35rem 2.8rem;   /* menor altura/largura */
   font-size: 0.65rem;        /* texto menor */
   border-radius: 8px;        /* cantos menos arredondados */
   box-shadow: none;          /* tira sombra se quiser mais clean */
@@ -140,7 +140,7 @@ a:hover{text-decoration:underline}
 }
 
 .card-actions .btn i {
-  font-size: 0.65rem;        /* ícone menor também */
+  font-size: 0.55rem;        /* ícone menor também */
 }
 
 

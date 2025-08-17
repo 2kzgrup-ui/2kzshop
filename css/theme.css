@@ -42,7 +42,7 @@ a:hover{text-decoration:underline}
 
 .btn{
   display:inline-flex;gap:.5rem;align-items:center;justify-content:center;
-  padding:.75rem 1rem;border-radius:999px;border:1px solid transparent;
+  padding:.75rem 1rem;border-radius:8px;border:1px solid transparent;
   background: var(--surface); color:var(--text); box-shadow: var(--shadow);
   transition:.2s transform, .2s background, .2s border-color;
   font-weight:600
@@ -91,58 +91,85 @@ a:hover{text-decoration:underline}
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--surface);
   border: 1px solid rgba(255, 195, 195, 0.445);
   box-shadow: var(--shadow);
   transition: .2s transform, .2s box-shadow;
   display: flex;
   flex-direction: column;
+  height: 100%; /* Adicionado */
 }
 
 .card:hover { transform: translateY(-4px); }
 
-/* Media do card com proporção 3:4 e imagem inteira */
 .card-media {
   width: 100%;
-  aspect-ratio: 4 / 4;           /* altura = 4/3 da largura */
+  aspect-ratio: 4 / 4;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;     /* fundo neutro nos espaços */
+  background-color: #ffffff;
 }
 
 .card-media img {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  object-fit: contain;            /* mostra a imagem inteira */
+  object-fit: contain;
   display: block;
 }
 
-.card-body { padding: 14px; }
+.card-body { 
+  padding: 10px;
+  flex-grow: 1; /* Adicionado */
+  display: flex; /* Adicionado */
+  flex-direction: column; /* Adicionado */
+}
 
 .card-title { margin: 0 0 4px; font-size: 1.05rem; font-weight: 600; }
 
 .card-price { font-weight: 600; color: var(--primary-2); }
 
+.badge { 
+  font-size: .75rem; 
+  background: var(--surface-2); 
+  border: 1px solid rgba(255, 195, 195, 0.445); 
+  padding: .25rem .5rem; 
+  border-radius: 600px; 
+}
 
-
-
-.badge { font-size: .55rem; background: var(--surface-2); border: 1px solid rgba(255, 195, 195, 0.445); padding: .25rem .5rem; border-radius: 999px; }
+/* Ajustes para centralizar o botão */
+.card-actions {
+  margin-top: auto; /* Empurra para baixo */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 0 1px 1px; /* Espaçamento */
+}
 
 .card-actions .btn {
-  padding: 0.35rem 2.9rem;   /* menor altura/largura */
-  font-size: 0.65rem;        /* texto menor */
-  border-radius: 8px;        /* cantos menos arredondados */
-  box-shadow: none;          /* tira sombra se quiser mais clean */
-  border: 1px solid rgba(0,0,0,0.1); /* borda bem suave */
+  width: 100%;
+  max-width: 180px;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  justify-content: center;
+  text-align: center;
 }
 
-.card-actions .btn i {
-  font-size: 0.55rem;        /* ícone menor também */
+/* Ajuste para mobile */
+@media (max-width: 650px){
+  .card-body { padding: 10px; }
+  .card-title { font-size: 0.9rem; }
+  .card-price { font-size: 0.95rem; }
+  .card-actions { 
+    flex-direction: row; 
+    justify-content: center;
+    padding: 10px 1px 1px;
+  }
+  .card-actions .btn {
+    max-width: 100%;
+  }
 }
-
 
 .platform { display: inline-flex; gap: 0rem; align-items: center; font-weight: 300; }
 

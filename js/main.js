@@ -70,10 +70,25 @@ function platformIcon(name){
 }
 
 /* --------- Navegação por abas --------- */
-function setActiveTab(tab){
-  $$(".nav a").forEach(a=>a.classList.toggle("active", a.dataset.route===tab));
-  $$(".tab").forEach(s=>s.classList.toggle("current", s.dataset.tab===tab));
-  if(location.hash.replace("#","")!==tab) location.hash = tab;
+function setActiveTab(tab) {
+  // Verifica se a aba existe
+  const tabElement = $(`[data-tab="${tab}"]`);
+  if (!tabElement) {
+    console.warn(`Aba "${tab}" não encontrada`);
+    return;
+  }
+   
+  $$('.tab').forEach(tab => tab.classList.remove('current'));
+  $$('.bottom-nav a').forEach(link => link.classList.remove('active'));
+  $$('.nav a').forEach(link => link.classList.remove('active'));
+  
+  $(`[data-tab="${tab}"]`).classList.add('current');
+  $$(`.bottom-nav a[data-route="${tab}"]`).forEach(link => link.classList.add('active'));
+  $$(`.nav a[data-route="${tab}"]`).forEach(link => link.classList.add('active'));
+  
+  if (location.hash.replace('#', '') !== tab) {
+    location.hash = tab;
+  }
 }
 
 function initNavigation(){

@@ -12,9 +12,8 @@ const DATA = {
       price: 35.28,
       category: "Livros",
       platforms: ["Mercado Livre"],
-      url: "https://mercadolivre.com/sec/2s1Ar3Q", // troque
-      image: "https://http2.mlstatic.com/D_NQ_NP_715073-MLU74589312917_022024-O.webp", // opcional: coloque um caminho em img/
-      desc: "",
+      url: "https://mercadolivre.com/sec/2s1Ar3Q",
+      image: "https://http2.mlstatic.com/D_NQ_NP_715073-MLU74589312917_022024-O.webp",
       featured: true,
       recommended: true
     },
@@ -26,7 +25,6 @@ const DATA = {
       platforms: ["Mercado Livre"],
       url: "https://mercadolivre.com/sec/25XtEx5",
       image: "https://http2.mlstatic.com/D_NQ_NP_931964-MLB89663238864_082025-O-camiseta-oversized-estampa-moderna-roupas-streetwear-basica.webp",
-      desc: "",
       featured: true,
       recommended: false
     },
@@ -38,7 +36,6 @@ const DATA = {
       platforms: ["Amazon"],
       url: "https://amazon.example.com/item/stickers-pack",
       image: "https://http2.mlstatic.com/D_NQ_NP_931964-MLB89663238864_082025-O-camiseta-oversized-estampa-moderna-roupas-streetwear-basica.webp",
-      desc: "",
       featured: true,
       recommended: true
     },
@@ -50,7 +47,6 @@ const DATA = {
       platforms: ["Amazon"],
       url: "https://amazon.example.com/item/book-collector",
       image: "",
-      desc: "",
       featured: false,
       recommended: true
     }
@@ -75,13 +71,12 @@ function platformIcon(name){
 
 /* --------- Navegação por abas --------- */
 function setActiveTab(tab){
-  $$("".bottom-nav a"").forEach(a=>a.classList.toggle("active", a.dataset.route===tab));
+  $$(".nav a").forEach(a=>a.classList.toggle("active", a.dataset.route===tab));
   $$(".tab").forEach(s=>s.classList.toggle("current", s.dataset.tab===tab));
   if(location.hash.replace("#","")!==tab) location.hash = tab;
 }
 
 function initNavigation(){
-  // toggle menu mobile
   const btn = $(".nav-toggle");
   const list = $("#nav-list");
   if(btn){
@@ -92,7 +87,7 @@ function initNavigation(){
     });
   }
 
-  $$(".bottom-nav a").forEach(a=>a.addEventListener("click",(e)=>{
+  $$(".nav a").forEach(a=>a.addEventListener("click",(e)=>{
     e.preventDefault();
     setActiveTab(a.dataset.route);
     list?.classList.remove("open");
@@ -100,6 +95,12 @@ function initNavigation(){
 
   const initial = location.hash ? location.hash.replace("#","") : "inicio";
   setActiveTab(initial);
+
+  // Agora escuta mudanças de hash (ex: quando usuário navega direto pelo link ou usa voltar/avançar)
+  window.addEventListener("hashchange", ()=>{
+    const tab = location.hash.replace("#","");
+    setActiveTab(tab || "inicio");
+  });
 }
 
 /* --------- Render helpers --------- */
@@ -111,12 +112,12 @@ function card(product){
     <div class="card-body">
       <h4 class="card-title">${product.name}</h4>
       <div class="card-price">${money(product.price)}</div>
-     
-      <div class="badges">${product.platforms.map(p=>`<span class="badge platform"><i class="${platformIcon(p)}"></i> ${p}</span>`).join("")}</div>
+      <div class="badges">${product.platforms.map(p=>`<span class="badge platform"><i style="font-size:0.8em" class="${platformIcon(p)}"></i> ${p}</span>`).join("")}</div>
       <div class="card-actions">
         <a class="btn btn-primary" href="${product.url}" target="_blank" rel="noopener">
           <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver no site
         </a>
+      </div>
     </div>
   </article>`;
 }
@@ -146,7 +147,7 @@ function applyFilters(){
   let list = DATA.products.slice();
   if(plat) list = list.filter(p=>p.platforms.includes(plat));
   if(cat) list = list.filter(p=>p.category===cat);
-  if(q) list = list.filter(p=> (p.name+p.desc).toLowerCase().includes(q));
+  if(q) list = list.filter(p=> p.name.toLowerCase().includes(q));
 
   renderProducts(list);
 }
@@ -158,29 +159,14 @@ function initFilters(){
   $("#searchInput").addEventListener("keydown", (e)=>{ if(e.key==="Enter") applyFilters(); });
 }
 
-/* --------- Ações --------- */
-function initCopyLinks(){
-  document.body.addEventListener("click", (e)=>{
-    const btn = e.target.closest("[data-copy]");
-    if(!btn) return;
-    const url = btn.getAttribute("data-copy");
-    navigator.clipboard.writeText(url).then(()=>{
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
-      setTimeout(()=> btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copiar link', 1200);
-    });
-  });
-}
-
 /* --------- Boot --------- */
 function boot(){
   $("#year").textContent = new Date().getFullYear();
-
   initNavigation();
   renderHighlights();
   renderProducts();
   renderRecs();
   initFilters();
-  initCopyLinks();
 }
 
 document.addEventListener("DOMContentLoaded", boot);

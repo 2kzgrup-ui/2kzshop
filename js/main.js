@@ -35,11 +35,11 @@ const DATA = {
       name: "Stickers para Notebook (kit 10)",
       price: 24.9,
       category: "Adesivos",
-      platforms: ["Amazon", "Mercado Livre"],
+      platforms: ["Amazon"],
       url: "https://amazon.example.com/item/stickers-pack",
-      image: "",
+      image: "https://http2.mlstatic.com/D_NQ_NP_931964-MLB89663238864_082025-O-camiseta-oversized-estampa-moderna-roupas-streetwear-basica.webp",
       desc: "",
-      featured: false,
+      featured: true,
       recommended: true
     },
     {

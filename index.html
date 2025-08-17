@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>alek.shitpost — HUB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comic+Neue:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Hub oficial alek.shitpost — todos os nossos produtos num lugar só.">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand" role="banner">
+      <img src="img/2kzlogo.png" alt="Logo" class="brand-logo">
+      
+    </div>
+
+    <nav class="nav" aria-label="Menu principal">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list"><i class="fa-solid fa-bars"></i></button>
+      <ul id="nav-list" class="nav-list">
+        <li><a href="#inicio" data-route="inicio" class="active">Início</a></li>
+        <li><a href="#produtos" data-route="produtos">Produtos</a></li>
+        <li><a href="#recomendados" data-route="recomendados">Recomendações</a></li>
+        <li><a href="#sobre" data-route="sobre">Sobre</a></li>
+        <li><a href="#contato" data-route="contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container">
+    <!-- INÍCIO -->
+    <section id="tab-inicio" class="tab current" data-tab="inicio">
+      
+      <!-- Banner apenas no início -->
+      <div class="banner-home">
+        <img src="img/banner.jpg" alt="Banner promocional">
+      </div>
+
+
+
+      <div class="pill-info">
+        <span><i class="fa-solid fa-bolt"></i> Atualizações rápidas</span>
+        <span><i class="fa-solid fa-shuffle"></i> Conteúdo caótico, do jeitinho alek</span>
+        <span><i class="fa-solid fa-lock-open"></i> Links diretos às lojas</span>
+      </div>
+
+      <div class="grid grid-3 promo-cards" id="highlights">
+        <!-- Preenchido via JS com alguns destaques -->
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section id="tab-produtos" class="tab" data-tab="produtos" aria-labelledby="Produtos">
+      <div class="toolbar">
+        <div class="filters">
+          <select id="platformFilter" title="Filtrar por plataforma">
+            <option value="">Todas plataformas</option>
+            <option value="Shopee">Shopee</option>
+            <option value="Mercado Livre">Mercado Livre</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Americanas">Americanas</option>
+          </select>
+          <select id="categoryFilter" title="Filtrar por categoria">
+            <option value="">Todas categorias</option>
+            <option value="Camisetas">Camisetas</option>
+            <option value="Acessórios">Acessórios</option>
+            <option value="Adesivos">Adesivos</option>
+            <option value="Livros">Livros</option>
+            <option value="Outros">Outros</option>
+          </select>
+        </div>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Buscar" />
+          <button id="searchBtn" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="grid grid-4">
+        <!-- Cards renderizados por JS -->
+      </div>
+    </section>
+
+    <!-- RECOMENDADOS -->
+    <section id="tab-recomendados" class="tab" data-tab="recomendados">
+      <div class="section-header">
+        <h3>Escolhas da casa</h3>
+        <p>Uma curadoria do que a galera anda curtindo.</p>
+      </div>
+      <div id="recGrid" class="grid grid-3">
+        <!-- Renderizado por JS -->
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="tab-sobre" class="tab" data-tab="sobre">
+      <div class="about">
+        <h3>Quem somos</h3>
+        <p>
+          A <strong>alek.shitpost</strong> é caos organizado: memes, estilo e produto bom sem frescura.
+          Este hub existe para <em>centralizar tudo</em> que criamos e espalhamos por aí.
+        </p>
+        <ul class="about-list">
+          <li><i class="fa-solid fa-wand-magic-sparkles"></i> Identidade própria — bagunça estética controlada</li>
+          <li><i class="fa-solid fa-cart-shopping"></i> Links diretos — você compra onde preferir</li>
+          <li><i class="fa-solid fa-screwdriver-wrench"></i> Fácil de manter — tudo configurável no arquivo <code>js/main.js</code></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="tab-contato" class="tab" data-tab="contato">
+      <div class="contact">
+        <h3>Cola com a gente</h3>
+        <div class="socials">
+          <a class="social" href="https://instagram.com/alek.shitpost" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a class="social" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+          <a class="social" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Discord</a>
+          <a class="social" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+        <p class="muted">Dica: personalize esses links direto no arquivo <code>index.html</code>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> alek.shitpost — hub by <a href="#" target="_blank" rel="noopener">2kz.grup</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+<!-- Bottom Navigation (mobile only) -->
+<nav class="bottom-nav">
+  <a href="#inicio" data-route="inicio" class="active"><i class="fa-solid fa-house"></i><span>Início</span></a>
+  <a href="#produtos" data-route="produtos"><i class="fa-solid fa-box"></i><span>Produtos</span></a>
+  <a href="#recomendados" data-route="recomendados"><i class="fa-solid fa-star"></i><span>Recomendados</span></a>
+  <a href="#sobre" data-route="sobre"><i class="fa-solid fa-user"></i><span>Sobre</span></a>
+</nav>
+
+</body>
+</html>

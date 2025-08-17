@@ -75,7 +75,7 @@ function platformIcon(name){
 
 /* --------- Navegação por abas --------- */
 function setActiveTab(tab){
-  $$(".nav a").forEach(a=>a.classList.toggle("active", a.dataset.route===tab));
+  $$("".bottom-nav a"").forEach(a=>a.classList.toggle("active", a.dataset.route===tab));
   $$(".tab").forEach(s=>s.classList.toggle("current", s.dataset.tab===tab));
   if(location.hash.replace("#","")!==tab) location.hash = tab;
 }
@@ -92,7 +92,7 @@ function initNavigation(){
     });
   }
 
-  $$(".nav a").forEach(a=>a.addEventListener("click",(e)=>{
+  $$(".bottom-nav a").forEach(a=>a.addEventListener("click",(e)=>{
     e.preventDefault();
     setActiveTab(a.dataset.route);
     list?.classList.remove("open");
